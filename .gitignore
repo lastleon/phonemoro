@@ -1,0 +1,7 @@
+/target
+/testing-playground
+/TODO.md
+/benches
+
+src/en/data/*
+!src/en/data/.gitkeep

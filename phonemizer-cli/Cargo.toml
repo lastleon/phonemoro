@@ -1,0 +1,14 @@
+[package]
+name = "phonemizer-cli"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+keywords = ["g2p", "linguistics", "phonemizer"]
+authors = ["lastleon <lastleon@posteo.de>"]
+description = "CLI for phonemizer-rs"
+repository = "https://github.com/lastleon/phonemizer-rs/tree/main/phonemizer-cli"
+
+[dependencies]
+anyhow = "1.0.97"
+clap = { version = "4.5.32", features = ["derive"] }
+phonemizer-rs = { version = "0.1.0", path = ".." }

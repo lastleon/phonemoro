@@ -1,0 +1,12 @@
+# Rules specific to data-preparation
+## General
+.python-version
+pyproject.toml
+uv.lock
+.venv
+release
+
+## Currently only applies to "en" directory
+*/data/*
+!*/data/.gitkeep
+*/out
