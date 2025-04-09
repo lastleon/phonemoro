@@ -37,7 +37,7 @@ $ git submodule add https://github.com/lastleon/phonemizer-rs
 2. Prepare the data. Currently, only US english is supported, so the instructions focus on that. You have two options:
 
    - **Build the data yourself**. For that, go to the `data-preparation` directory, and follow the instructions there. Then, copy the artifacts (`model.fst`, `us_gold.json` and `us_silver.json`) to `src/en/data`. Note that this requires additional dependencies, and is currently only supported on Linux and maybe MacOS.
-   - **Download the data from the _Releases_ page** (_Recommended_). Copy everything within the `en/out` folder from the release into `src/en/data`.
+   - **Download the data from the _Releases_ page** (_Recommended_). Copy the files `model.fst`, `us_gold.json` and `us_silver.json` within the `en/` folder from the release into `src/en/data`.
 
 3. Now, back in your crate, add `phonemizer-rs` as a dependency:
 
