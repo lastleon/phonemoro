@@ -11,7 +11,7 @@ Currently only support for US english.
 🚨 <b>WIP, so a lot can still change</b> 🚨
 </p>
 
-> ⚠️ This project was renamed from phonemizer-rs to phonemoro.
+> ⚠️ This project was renamed from phonemizer-rs to phonemoro. See https://github.com/lastleon/phonemoro/pull/1#issue-2992845609 for further information.
 
 ## Overview
 
