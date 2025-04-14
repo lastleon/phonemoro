@@ -1,6 +1,6 @@
 use anyhow::Result;
 use clap::{Arg, Command};
-use phonemizer_rs::en::phonemizer::EnPhonemizer;
+use phonemoro::en::phonemizer::EnPhonemizer;
 
 fn main() -> Result<()> {
     let matches = Command::new("phonemize")

@@ -1,11 +1,11 @@
-# phonemizer-cli
+# phonemoro-cli
 ## Build
 See project [README](../README.md) for build instructions.
 
 ## Usage
 ```shell
-$ ./target/release/phonemizer-cli --help
-Usage: phonemizer-cli [OPTIONS] <text_or_file>
+$ ./target/release/phonemoro-cli --help
+Usage: phonemoro-cli [OPTIONS] <text_or_file>
 
 Arguments:
   <text_or_file>  Pass the path to the file that should be converted to phonemes. If the flag --text is set, this will be interpreted as raw text.
