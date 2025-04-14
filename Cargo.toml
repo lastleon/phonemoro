@@ -6,7 +6,7 @@ resolver = "2"
 name = "phonemoro"
 version = "0.2.0"
 edition = "2024"
-authors = ["lastleont"]
+authors = ["lastleon <lastleon@posteo.de>"]
 
 [dependencies]
 phonemoro-common = { version = "0.2.0", path = "./phonemoro-common" }
