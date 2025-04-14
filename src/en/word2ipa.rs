@@ -1,5 +1,5 @@
-use phonemizer_common::{TranscriptionDict, TranscriptionEntry, TranscriptionLookup};
-use phonemizer_macros::phm_from_json;
+use phonemoro_common::{TranscriptionDict, TranscriptionEntry, TranscriptionLookup};
+use phonemoro_macros::phm_from_json;
 
 pub struct TranscriptionStoreEN {
     dicts: [TranscriptionDict; 2usize],

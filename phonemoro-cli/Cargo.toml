@@ -11,4 +11,4 @@ repository = "https://github.com/lastleon/phonemoro/tree/main/phonemoro-cli"
 [dependencies]
 anyhow = "1.0.97"
 clap = { version = "4.5.32", features = ["derive"] }
-phonemoro = { version = "0.1.0", path = ".." }
+phonemoro = { version = "0.2.0", path = ".." }

@@ -1,16 +1,16 @@
 [workspace]
-members = [ "phonemizer-macros", "phonemizer-common", "phonemizer-cli"]
+members = [ "phonemoro-macros", "phonemoro-common", "phonemoro-cli"]
 resolver = "2"
 
 [package]
-name = "phonemizer-rs"
-version = "0.1.0"
+name = "phonemoro"
+version = "0.2.0"
 edition = "2024"
 authors = ["lastleont"]
 
 [dependencies]
-phonemizer-common = { version = "0.1.0", path = "./phonemizer-common" }
-phonemizer-macros = { version = "0.1.0", path = "./phonemizer-macros" }
+phonemoro-common = { version = "0.2.0", path = "./phonemoro-common" }
+phonemoro-macros = { version = "0.2.0", path = "./phonemoro-macros" }
 anyhow = "1.0.95"
 logos = "0.15.0"
 phf = { version = "0.11.3", features = ["macros"] }
