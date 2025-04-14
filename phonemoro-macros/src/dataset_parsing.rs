@@ -24,7 +24,7 @@ pub fn create_phf_map(data_path: &PathBuf) -> anyhow::Result<phf_codegen::Map<St
             Transcription::Single(p) => {
                 phf_builder.entry(
                     graphemes.clone(),
-                    format!("::phonemizer_common::TranscriptionEntry::Single(\"{}\")", p).as_str(),
+                    format!("::phonemoro_common::TranscriptionEntry::Single(\"{}\")", p).as_str(),
                 );
             }
 
@@ -36,7 +36,7 @@ pub fn create_phf_map(data_path: &PathBuf) -> anyhow::Result<phf_codegen::Map<St
                 phf_builder.entry(
                     graphemes.clone(),
                     format!(
-                        "::phonemizer_common::TranscriptionEntry::Multiple({})",
+                        "::phonemoro_common::TranscriptionEntry::Multiple({})",
                         inner_phf_builder.build()
                     )
                     .as_str(),

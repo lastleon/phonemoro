@@ -3,7 +3,7 @@ use phonetisaurus_g2p::PhonetisaurusModel;
 use tokenizers::{normalizers::NFKC, NormalizedString, Normalizer};
 
 use crate::en::{constants::DIGIT2WORD, word2ipa::WORD2IPA_EN};
-use phonemizer_common::{TranscriptionEntry, TranscriptionLookup};
+use phonemoro_common::{TranscriptionEntry, TranscriptionLookup};
 
 use super::constants::UNICODE2ASCII;
 use super::tokenizer::{EnTokenizer, Token, TokenContext};

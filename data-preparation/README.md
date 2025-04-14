@@ -21,13 +21,13 @@ So, assuming some Linux distribution with the usual utils, this is additionally 
 ### Usage
 Create a uv project, and add the requirements:
 ```shell
-phonemizer-rs/data-preparation $ uv init && uv venv
-phonemizer-rs/data-preparation $ uv add -r requirements.txt
+phonemoro/data-preparation $ uv init && uv venv
+phonemoro/data-preparation $ uv add -r requirements.txt
 ```
 
 Then, just build the artifacts:
 ```shell
-phonemizer-rs/data-preparation $ make en
+phonemoro/data-preparation $ make en
 ```
 
 ### Artifacts

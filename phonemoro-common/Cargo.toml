@@ -1,0 +1,12 @@
+[package]
+name = "phonemoro-common"
+version = "0.2.0"
+edition = "2024"
+license = "MIT"
+keywords = ["g2p", "linguistics", "phonemizer"]
+authors = ["lastleon <lastleon@posteo.de>"]
+description = "Common datastructures and code for phonemoro"
+repository = "https://github.com/lastleon/phonemoro/tree/main/phonemoro-common"
+
+[dependencies]
+phf = "0.11.3"

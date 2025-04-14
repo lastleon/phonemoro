@@ -1,4 +1,4 @@
-# Phonemizer-rs
+# Phonemoro
 
 _Fast, low-latency and highly portable phonemizer._
 
@@ -7,8 +7,11 @@ Created for the use with [Kokoro](https://huggingface.co/hexgrad/Kokoro-82M), bu
 Suitable for edge devices. Easy deployment, since all data is statically included in the binary, so no dependencies or other files needed.
 
 Currently only support for US english.
+<p align="center">
+🚨 <b>WIP, so a lot can still change</b> 🚨
+</p>
 
-⚠️ **WIP, so a lot can still change** ⚠️
+> ⚠️ This project was renamed from phonemizer-rs to phonemoro. See https://github.com/lastleon/phonemoro/pull/1#issue-2992845609 for further information.
 
 ## Overview
 
@@ -20,7 +23,7 @@ This project started because I needed a phonemizer for use with [Kokoro](https:/
 - produce IPA phonemes that are compatible with Kokoro, i.e. do not sound weird
 - be easy to use and cross compile
 
-With that in mind, this is how the phonemizer works:
+With that in mind, this is how the  works:
 
 1. **Tokenization**: First, the input text is tokenized using [Logos](https://github.com/maciejhirsz/logos) for easier preprocessing and phonemization logic.
 2. **Lookup**: Then, the relevant words are looked up in the grapheme-to-phoneme datasets used by [Misaki](https://github.com/hexgrad/Misaki), the phonemizer behind Kokoro. The datasets are preprocessed and then statically embedded in the binary as a `phf_map` from the [phf](https://github.com/rust-phf/rust-phf) crate.
@@ -31,7 +34,7 @@ With that in mind, this is how the phonemizer works:
 1. Add the repository as a submodule to your crate:
 
 ```shell
-$ git submodule add https://github.com/lastleon/phonemizer-rs
+$ git submodule add https://github.com/lastleon/phonemoro
 ```
 
 2. Prepare the data. Currently, only US english is supported, so the instructions focus on that. You have two options:
@@ -39,16 +42,16 @@ $ git submodule add https://github.com/lastleon/phonemizer-rs
    - **Build the data yourself**. For that, go to the `data-preparation` directory, and follow the instructions there. Then, copy the artifacts (`model.fst`, `us_gold.json` and `us_silver.json`) to `src/en/data`. Note that this requires additional dependencies, and is currently only supported on Linux and maybe MacOS.
    - **Download the data from the _Releases_ page** (_Recommended_). Copy the files `model.fst`, `us_gold.json` and `us_silver.json` within the `en/` folder from the release into `src/en/data`.
 
-3. Now, back in your crate, add `phonemizer-rs` as a dependency:
+3. Now, back in your crate, add `phonemoro` as a dependency:
 
 ```shell
-$ cargo add --path ./phonemizer-rs
+$ cargo add --path ./phonemoro
 ```
 
 4. Use the library like so:
 
 ```rust
-use phonemizer_rs::en::phonemizer::EnPhonemizer;
+use phonemoro::en::phonemizer::EnPhonemizer;
 
 fn main() {
     let phonemizer = EnPhonemizer::new().unwrap();
@@ -63,7 +66,7 @@ fn main() {
 1. Clone the repository:
 
 ```shell
-$ git clone https://github.com/lastleon/phonemizer-rs
+$ git clone https://github.com/lastleon/phonemoro
 ```
 
 2. Prepare data the same way as for library usage, so step 2 of the previous section.
@@ -71,14 +74,14 @@ $ git clone https://github.com/lastleon/phonemizer-rs
 3. Build the cli:
 
 ```shell
-$ cargo build -p phonemizer-cli --release
+$ cargo build -p phonemoro-cli --release
 ```
 
 4. Use the binary, no other files needed:
 
 ```shell
-$ ./target/release/phonemizer-cli --help
-Usage: phonemizer-cli [OPTIONS] <text_or_file>
+$ ./target/release/phonemoro-cli --help
+Usage: phonemoro-cli [OPTIONS] <text_or_file>
 
 Arguments:
   <text_or_file>  Pass the path to the file that should be converted to phonemes. If the flag --text is set, this will be interpreted as raw text.
@@ -104,7 +107,7 @@ Options:
 
 ## Acknowledgements
 
-- [hexgrad/Misaki](https://github.com/hexgrad/Misaki): Original (and reference) phonemizer for Kokoro, smarter than `phonemizer-rs`.
+- [hexgrad/Misaki](https://github.com/hexgrad/Misaki): Original (and reference) phonemizer for Kokoro, smarter than `phonemoro`.
 - [Patchethium/Celosia](https://github.com/Patchethium/Celosia): Another phonemizer in Rust, a good choice. Inspired a lot about how this project works, but does not use the Misaki datasets and its phonetic alphabet is ARPAbet, which makes it incompatible with Kokoro. ARPAbet could theoretically be transcribed to IPA, but it isn't as expressive as IPA (specifically, the stresses are missing), so doesn't work great.
 
 ## Attribution
@@ -116,4 +119,4 @@ The data is cleaned, processed, transformed into a different format, and used fo
 
 ## License
 
-`phonemizer-rs` is licensed under the MIT License.
+`phonemoro` is licensed under the MIT License.
