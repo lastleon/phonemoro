@@ -1,12 +1,12 @@
 [package]
-name = "phonemizer-macros"
-version = "0.1.0"
+name = "phonemoro-macros"
+version = "0.2.0"
 edition = "2024"
 license = "MIT"
 keywords = ["proc-macro", "json", "phf"]
 authors = ["lastleon <lastleon@posteo.de>"]
-description = "proc-macros for phonemizer-rs"
-repository = "https://github.com/lastleon/phonemizer-rs/tree/main/phonemizer-macros"
+description = "proc-macros for phonemoro"
+repository = "https://github.com/lastleon/phonemoro/tree/main/phonemoro-macros"
 
 [lib]
 proc-macro = true
@@ -14,7 +14,7 @@ proc-macro = true
 [dependencies]
 anyhow = "1.0.97"
 phf_codegen = "0.11.3"
-phonemizer-common = { version = "0.1.0", path = "../phonemizer-common" }
+phonemoro-common = { version = "0.2.0", path = "../phonemoro-common" }
 serde = { version = "1.0.217", features = ["derive"] }
 serde_json = "1.0.140"
 syn = "2.0.100"

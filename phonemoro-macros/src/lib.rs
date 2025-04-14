@@ -14,7 +14,7 @@ pub fn phm_from_json(tokens: TokenStream) -> TokenStream {
 
     // if relative: Eval from crate root
     // WARNING: CARGO_MANIFEST_DIR must be accessed with std::env:var, not with env!.
-    // If env! was used, the path to the phonemizer-macros crate would be inserted, not
+    // If env! was used, the path to the phonemoro-macros crate would be inserted, not
     // the path to the crate where the macro was invoked.
     let passed_data_path =
         if passed_data_path.is_relative() {
