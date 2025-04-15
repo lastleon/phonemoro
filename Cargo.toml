@@ -1,5 +1,6 @@
 [workspace]
 members = [".", "phonemoro-macros", "phonemoro-common", "phonemoro-cli"]
+default-members = ["."]
 resolver = "2"
 
 [package]
