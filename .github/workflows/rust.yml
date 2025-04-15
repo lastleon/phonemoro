@@ -17,19 +17,9 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
-    - name: Download datasets and models from release
-      uses: robinraju/release-downloader@v1
-      with:
-        tag: 'v0.1.0'
-        fileName: 'release.zip'
-        tarBall: true
-        zipBall: true
-        out-file-path: 'release-download'
-    - name: Extract files and place them in the correct place
-      run: cd release-download && unzip release.zip && mv en/{us_gold.json,us_silver.json,model.fst} ../src/en/data
     - name: Install newest toolchain
       run: rustup update stable && rustup default stable
     - name: Build
-      run: cargo build --verbose
+      run: cargo build --verbose -F download-data
     - name: Run tests
-      run: cargo test --verbose
+      run: cargo test --verbose -F download-data

@@ -1,12 +1,20 @@
 [workspace]
-members = [ "phonemoro-macros", "phonemoro-common", "phonemoro-cli"]
+members = [".", "phonemoro-macros", "phonemoro-common", "phonemoro-cli"]
+default-members = ["."]
 resolver = "2"
 
 [package]
 name = "phonemoro"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
 authors = ["lastleon <lastleon@posteo.de>"]
+
+[features]
+default = []
+
+# This enables automatic download of data necessary to build this project from
+# the GitHub releases page. Disabled by default.
+download-data = ["dep:anyhow", "dep:ureq", "dep:uuid", "dep:zip-extract"]
 
 [dependencies]
 phonemoro-common = { version = "0.2.0", path = "./phonemoro-common" }
@@ -17,3 +25,9 @@ phf = { version = "0.11.3", features = ["macros"] }
 serde = { version = "1.0.217", features = ["derive"] }
 tokenizers = "0.21.0"
 phonetisaurus-g2p = "0.1.1"
+
+[build-dependencies]
+anyhow = { version = "1.0.95", optional = true }
+ureq = { version = "3.0.10", optional = true }
+uuid = { version = "1.16.0", features = ["v4"], optional = true }
+zip-extract = { version = "0.2.2", optional = true }
