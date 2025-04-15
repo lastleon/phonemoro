@@ -26,15 +26,14 @@ pub fn phm_from_json(tokens: TokenStream) -> TokenStream {
             passed_data_path
         };
 
-    let data_path = passed_data_path.canonicalize().expect(
-        format!(
+    let data_path = passed_data_path.canonicalize().unwrap_or_else(|_| {
+        panic!(
             "Canonicalization failed. Absolute path before trying to resolve it: '{:?}'",
-            ::std::path::absolute(passed_data_path).expect(
+            std::path::absolute(passed_data_path).expect(
                 "Getting absolute path of argument path failed, something is really wrong."
             )
         )
-        .as_str(),
-    );
+    });
 
     // create map from that
     let phf_map_builder = create_phf_map(&data_path).expect("Creating phf map failed.");
