@@ -8,7 +8,14 @@ authors = ["lastleon <lastleon@posteo.de>"]
 description = "CLI for phonemoro"
 repository = "https://github.com/lastleon/phonemoro/tree/main/phonemoro-cli"
 
+[features]
+default = []
+
+# This enables automatic download of data necessary to build this project from
+# the GitHub releases page. Disabled by default.
+download-data = ["phonemoro/download-data"]
+
 [dependencies]
 anyhow = "1.0.97"
 clap = { version = "4.5.32", features = ["derive"] }
-phonemoro = { version = "0.2.0", path = ".." }
+phonemoro = { version = "0.3.0", path = ".." }

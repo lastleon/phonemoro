@@ -7,11 +7,12 @@ Created for the use with [Kokoro](https://huggingface.co/hexgrad/Kokoro-82M), bu
 Suitable for edge devices. Easy deployment, since all data is statically included in the binary, so no dependencies or other files needed.
 
 Currently only support for US english.
+
 <p align="center">
 🚨 <b>WIP, so a lot can still change</b> 🚨
 </p>
 
-> ⚠️ This project was renamed from phonemizer-rs to phonemoro. See https://github.com/lastleon/phonemoro/pull/1#issue-2992845609 for further information.
+> ⚠️ This project was renamed from phonemizer-rs to phonemoro. See <https://github.com/lastleon/phonemoro/pull/1#issue-2992845609> for further information.
 
 ## Overview
 
@@ -23,7 +24,7 @@ This project started because I needed a phonemizer for use with [Kokoro](https:/
 - produce IPA phonemes that are compatible with Kokoro, i.e. do not sound weird
 - be easy to use and cross compile
 
-With that in mind, this is how the  works:
+With that in mind, this is how the works:
 
 1. **Tokenization**: First, the input text is tokenized using [Logos](https://github.com/maciejhirsz/logos) for easier preprocessing and phonemization logic.
 2. **Lookup**: Then, the relevant words are looked up in the grapheme-to-phoneme datasets used by [Misaki](https://github.com/hexgrad/Misaki), the phonemizer behind Kokoro. The datasets are preprocessed and then statically embedded in the binary as a `phf_map` from the [phf](https://github.com/rust-phf/rust-phf) crate.
@@ -31,24 +32,24 @@ With that in mind, this is how the  works:
 
 ## Usage (lib)
 
-1. Add the repository as a submodule to your crate:
+This library requires data that needs to be prepared. You can either do that manually, or you can enable a feature and automatically download the prepared data from the releases page.
+
+By default, automatically downloading the data is disabled.
+
+### Easy Way _(Recommended)_
+
+1. Add this library to your crate, with the `download-data` feature enabled:
 
 ```shell
-$ git submodule add https://github.com/lastleon/phonemoro
+$ cargo add --git https://github.com/lastleon/phonemoro -F download-data
 ```
 
-2. Prepare the data. Currently, only US english is supported, so the instructions focus on that. You have two options:
+> ⚠️ **Warning**:
+> This downloads the `release.zip` file from the releases page on GitHub, unzips it, and moves the contents to the appropriate directory.
+>
+> This only works from **version 0.3.0 onwards**. You should only ever use the latest version of the library anyway, for now.
 
-   - **Build the data yourself**. For that, go to the `data-preparation` directory, and follow the instructions there. Then, copy the artifacts (`model.fst`, `us_gold.json` and `us_silver.json`) to `src/en/data`. Note that this requires additional dependencies, and is currently only supported on Linux and maybe MacOS.
-   - **Download the data from the _Releases_ page** (_Recommended_). Copy the files `model.fst`, `us_gold.json` and `us_silver.json` within the `en/` folder from the release into `src/en/data`.
-
-3. Now, back in your crate, add `phonemoro` as a dependency:
-
-```shell
-$ cargo add --path ./phonemoro
-```
-
-4. Use the library like so:
+2. Use the library like so:
 
 ```rust
 use phonemoro::en::phonemizer::EnPhonemizer;
@@ -61,23 +62,48 @@ fn main() {
 }
 ```
 
-## Usage (cli)
+### Harder Way
 
-1. Clone the repository:
+Use this only if you're uncomfortable downloading from the internet, or you want to use your own data.
+
+1. Clone this repository:
 
 ```shell
 $ git clone https://github.com/lastleon/phonemoro
 ```
 
-2. Prepare data the same way as for library usage, so step 2 of the previous section.
+2. Prepare the data. Currently, only US english is supported, so the instructions focus on that. For that, go to the `data-preparation` directory, and follow the instructions there. Then, copy the artifacts (`model.fst`, `us_gold.json` and `us_silver.json`) to `src/en/data`. Note that this requires additional dependencies, and is currently only supported on Linux and maybe MacOS.
 
-3. Build the cli:
+3. Now, go to your own crate, and add `phonemoro` as a dependency:
 
 ```shell
-$ cargo build -p phonemoro-cli --release
+$ cargo add --path <path-to-the-cloned-phonemoro-repo>
 ```
 
-4. Use the binary, no other files needed:
+4. Use the library like shown in the previous section.
+
+## Usage (cli)
+
+1. Clone this repository:
+
+```shell
+$ git clone https://github.com/lastleon/phonemoro
+```
+
+2. Build the cli tool:
+
+- **Easy Way**: Build the cli tool with the `download-data` feature enabled:
+
+  ```shell
+  $ cargo build -p phonemoro-cli --release -F download-data
+  ```
+
+  > ⚠️ **Warning**:
+  > The same warnings as in [Usage (lib) > Easy Way](#easy-way) apply here.
+
+- **Harder Way**: Follow step 2 of [Usage (lib) > Harder Way](#harder-way)
+
+3. Use the tool:
 
 ```shell
 $ ./target/release/phonemoro-cli --help
