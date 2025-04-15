@@ -41,7 +41,7 @@ By default, automatically downloading the data is disabled.
 1. Add this library to your crate, with the `download-data` feature enabled:
 
 ```shell
-$ cargo add --git https://github.com/lastleon/phonemoro -F download-data
+$ cargo add --git https://github.com/lastleon/phonemoro phonemoro -F download-data
 ```
 
 > ⚠️ **Warning**:
